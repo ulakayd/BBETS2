@@ -1,12 +1,12 @@
 ---
 title: "Brownlows Bets"
-author: "Davy d
+author: "Davy d"
 output: 
   html_document:
     number_sections: true
     toc: true
     toc_depth: 5
-date: "`r Sys.Date()`"    
+date: "SPRING 2024"    
     
 ---
 ```{r setup, include=FALSE}
@@ -62,7 +62,8 @@ uCI = floor(sortedResults[0.975*nSims])
 print('95% Confidence Interval, average earnings/losses')
 
 print(c(lCI,uCI))
-
+sdev=sd(saveResults)
+print(paste("sd=",round(sdev,2)))
 ```
  
 
@@ -78,18 +79,44 @@ nSims=500
 saveResults= matrix(rep(0,nSims))
 # nSim simulations
 for(i in 1:nSims){  
-saveResults[i] = BrLw(35,3,637)  #historical did this 637 times
+saveResults[i] = BrLw(35,4.25,637)  #historical did this 637 times
 }
 hist(saveResults)
 print(paste('mean profit= ', round(mean(saveResults))))
+
+sortedResults = sort(saveResults)
+#95% confidence interval
+lCI = ceiling(sortedResults[0.025*nSims])
+uCI = floor(sortedResults[0.975*nSims])
+print('95% Confidence Interval, average earnings/losses')
+
+print(c(lCI,uCI))
 ```
+The fair amount that should be paid out is 4.25 (-82, 122).
 
 ### Question 3
 What size of class makes the 2:1 bet fair?  Use manipulation of number of Students to tune Brownlows earnings to zero.
 
 <!--Explain and display the results of your method of coming up with the estimate of professor Brownlow's betting profits!-->
 
+```{r}
+nSims=500
+saveResults= matrix(rep(0,nSims))
+# nSim simulations
+for(i in 1:nSims){  
+saveResults[i] = BrLw(29,2,637)  #historical did this 637 times
+}
+hist(saveResults)
+print(paste('mean profit= ', round(mean(saveResults))))
 
+sortedResults = sort(saveResults)
+#95% confidence interval
+lCI = ceiling(sortedResults[0.025*nSims])
+uCI = floor(sortedResults[0.975*nSims])
+print('95% Confidence Interval, average earnings/losses')
+
+print(c(lCI,uCI))
+```
 
 # Discussion and Conclusion
 
