@@ -66,7 +66,7 @@ sdev=sd(saveResults)
 print(paste("sd=",round(sdev,2)))
 ```
  
-
+The mean profit as shown on the graph is around 283 as the mean loss is around 110. (226,340)
 
 ### Question 2
 What are the fair odds for a class size of 35 students? Manipulation of odds in the function to tune Brownlow's earnings to zero. 
@@ -104,7 +104,7 @@ nSims=500
 saveResults= matrix(rep(0,nSims))
 # nSim simulations
 for(i in 1:nSims){  
-saveResults[i] = BrLw(29,2,637)  #historical did this 637 times
+saveResults[i] = BrLw(28,2,637)  #historical did this 637 times
 }
 hist(saveResults)
 print(paste('mean profit= ', round(mean(saveResults))))
@@ -117,9 +117,9 @@ print('95% Confidence Interval, average earnings/losses')
 
 print(c(lCI,uCI))
 ```
-
+The class size that gets the odds closest to being fair is 28. ( -47, 100)
 # Discussion and Conclusion
 
 <!--Discussion and conclusion here.  If professor Brownlow is consistantly making or losing money how could he change his payout so that his profits center on zero?  Also discuss what size his class should be in order to have his current scheme balance at zero profit.!-->
 
-Do the results make sense?   Class of 35 and 365 days, shouldn't Dr. Brownlow actually have a loss?  Why/why not
+The results do make sense, they have enough statistical backing. In order for him to make profit Brownlow has to bet less money on a bigger class size, that he's making a 2:1 ratio for every dollar he is putting in. Zero profit would be a class size of 0. 
